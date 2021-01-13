@@ -1,16 +1,17 @@
 # Meson suggested build directories (local and package)
 build/
 /obj-*/
+dist/
 
 # Packaging generated content
 debian/*debhelper*
 debian/files
 debian/*.substvars
 debian/tmp/
-debian/yaru-theme-gnome-shell/
-debian/yaru-theme-gtk/
-debian/yaru-theme-icon/
-debian/yaru-theme-sound/
+debian/yellowfin-theme-gnome-shell/
+debian/yellowfin-theme-gtk/
+debian/yellowfin-theme-icon/
+debian/yellowfin-theme-sound/
 
 # snapcraft build artefacts
 parts/

@@ -1,4 +1,4 @@
-sassc = find_program('sassc')
+sassc = find_program('sass')
 
 gnomeshell_theme_dir = join_paths(gnomeshell_default_theme_dir,
   meson.project_name())
@@ -78,7 +78,7 @@ foreach variant: variants
       input: style == 'gnome-shell' ? theme_main_file : '@0@.scss'.format(style),
       output: '@0@.css'.format(stylename),
       command: [
-        sassc, '-a', '@INPUT@', '@OUTPUT@',
+        sassc, '@INPUT@', '@OUTPUT@',
         '-I', css_sources_path,
       ],
       install: not is_variant and not gnomeshell_use_gresource,

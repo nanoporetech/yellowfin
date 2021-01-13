@@ -63,10 +63,10 @@ contexts=( actions apps categories devices emblems mimetypes places status )
 # CHECKS
 ###################################################
 
-# current workding directory expected to be yaru/icons/src/scalable
+# current workding directory expected to be yellowfin/icons/src/scalable
 CWD=$(pwd)
 if [[ ! ${CWD} =~ "icons/src/scalable" ]]; then
-  fatal "unexpected working directory ${CWD}. Please execute the script under yaru/icons/src/scalable folder."
+  fatal "unexpected working directory ${CWD}. Please execute the script under yellowfin/icons/src/scalable folder."
 fi
 info "working directory OK."
 

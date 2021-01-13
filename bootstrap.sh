@@ -1,16 +1,19 @@
 #!/usr/bin/env bash
 # -*- coding: UTF-8 -*-
-## This script will make you up and running for testing and/or development on the Yaru project.
+## This script will make you up and running for testing and/or development on the Yellowfin project.
 ## usage:
 ##  bootstrap.sh --development
 ##  bootstrap.sh --testing
 ##  bootstrap.sh --build
 ##
 ##  options:
-##    -d, --development Install the dependencies for building and installing Yaru theme
-##    -t, --testing     Install the dependencies for testing an already installed Yaru theme
-##    -b, --build       Build and install Yaru theme
-# CLInt GENERATED_CODE: start
+##    -d, --development Install the dependencies for building and installing Yellowfin theme
+##    -t, --testing     Install the dependencies for testing an already installed Yellowfin theme
+##    -b, --build       Build Yellowfin theme
+##    -p [version], --package [version]   Package Yellowfin theme
+##    -c, --clean       Clean the build directory
+
+PACKAGE_DIR=/source/repos/yellowfin/build/pkg/
 
 # No-arguments is not allowed
 [ $# -eq 0 ] && sed -ne 's/^## \(.*\)/\1/p' $0 && exit 1
@@ -22,6 +25,8 @@ for arg in "$@"; do
 "--development") set -- "$@" "-d";;
 "--testing") set -- "$@" "-t";;
 "--build") set -- "$@" "-b";;
+"--package") set -- "$@" "-p";;
+"--clean") set -- "$@" "-c";;
   *) set -- "$@" "$arg"
   esac
 done
@@ -31,13 +36,15 @@ function print_illegal() {
 }
 
 # Parsing flags and arguments
-while getopts 'hdtb' OPT; do
+while getopts 'hdtbpc' OPT; do
     case $OPT in
         h) sed -ne 's/^## \(.*\)/\1/p' $0
            exit 1 ;;
         d) _development=1 ;;
         t) _testing=1 ;;
         b) _build=1 ;;
+        p) _package=1 ;;
+        c) _clean=1 ;;
         \?) print_illegal $@ >&2;
             echo "---"
             sed -ne 's/^## \(.*\)/\1/p' $0
@@ -54,14 +61,14 @@ function log {
   echo "[+]" $@
 }
 
-development_deps=(meson sassc libgtk-3-dev)
+development_deps=(meson sass libgtk-3-dev)
 testing_deps=(libgtk-3-dev gtk-3-examples gnome-tweaks)
 
 function install {
   target=$1
   shift
   deps=($@)
-  log "the following application will be installed for $target Yaru"
+  log "the following application will be installed for $target Yellowfin"
   for d in ${deps[@]}; do
     echo - $d
   done
@@ -75,8 +82,45 @@ function build {
     meson build
   fi
   ninja -C build install
+  DESTDIR=$PACKAGE_DIR meson install -C build
 }
+
+function package {
+  if [ ! -d ./build ]; then
+    echo "You may want to run --build (-b) first!"
+    exit 1
+  fi
+  ver=""
+  if [[ $1 != "" ]]; then
+    if [[ $1 =~ [0-9]+\.[0-9]+\.[0-9]+ ]]; then
+      ver=$1
+      sed -i "s/Version: [0-9]\+\.[0-9]\+\.[0-9]\+/Version: $ver/" ./DEBIAN/control
+    fi
+  fi
+  if [[ $ver == "" ]]; then
+    SUB=`(( i = $(awk -F"[ .]" '/Version: /{print $4}' ./DEBIAN/control) +1 ));echo $i`
+    sed -i "/Version: /s/\([0-9]\+\.[0-9]\+\.\)[0-9]\+/\1$SUB/" ./DEBIAN/control
+  fi
+  VERSION=$(awk '/Version: /{print $2}' ./DEBIAN/control)
+  echo "Copying control data"
+  rsync -au DEBIAN $PACKAGE_DIR
+  echo "Generating MD5 Checksums"
+  find $PACKAGE_DIR -type f ! -regex '.*\(\bDEBIAN\b\).*' -exec md5sum {} \; | sed 's%$PACKAGE_DIR/%%' > $PACKAGE_DIR/DEBIAN/md5sums
+  echo "Setting perms"
+	chmod 644 $PACKAGE_DIR/DEBIAN/* $PACKAGE_DIR/DEBIAN/md5sums
+  chmod 755 $PACKAGE_DIR/DEBIAN/post* $PACKAGE_DIR/DEBIAN/pre*
+  mkdir -p dist
+	fakeroot dpkg -b $PACKAGE_DIR dist/yellowfin-$VERSION.deb
+}
+
+function clean {
+  rm -rf ./build
+}
+
+shift $(($OPTIND - 1))
 
 [ ! -z $_development ] && install "building and installing" ${development_deps[@]}
 [ ! -z $_testing ] && install "testing" ${testing_deps[@]}
+[ ! -z $_clean ] && clean
 [ ! -z $_build ] && build
+[ ! -z $_package ] && package $1

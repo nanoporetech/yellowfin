@@ -759,7 +759,7 @@
         background-color: _backdrop_color(transparentize($bg, 0.3));
       }
       @else {
-        @if $variant='light' {
+        @if $variant=='light' {
           background-color: _backdrop_color($bg);
         }
         @else {

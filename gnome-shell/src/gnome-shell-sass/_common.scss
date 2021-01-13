@@ -39,12 +39,12 @@ $modal_radius:$base_border_radius + 2; // Yaru: we want a smaller border-radius
 $bubble_borders_color: lighten($borders_color, if($variant=='light', 0%, 5%));
 // $bubble_borders_color: if($variant == 'light', rgba(255,255,255,0.1), rgba(0,0,0,0.3));
 
-// hover Yaru: we want the hover bg to be a visible gray for dark and light shell themes
+// hover Yellowfin: we want the hover bg to be a visible gray for dark and light shell themes
 $hover_bg_color: transparentize($fg_color, 0.9);
 $hover_fg_color: $fg_color;
 $hover_borders_color: lighten($borders_color,if($variant=='light', 5%, 3%));
 
-// active Yaru: we want the active bg to be a visible gray for dark and light shell themes
+// active Yellowfin: we want the active bg to be a visible gray for dark and light shell themes
 $active_bg_color: transparentize($fg_color, 0.8);
 $active_fg_color: darken($fg_color,if($variant=='light', 5%, 3%));
 $active_borders_color: darken($borders_color,if($variant=='light', 5%, 3%));

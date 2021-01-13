@@ -54,7 +54,7 @@ foreach style: styles
                               input: '@0@.scss'.format(style),
                               output: '@0@.css'.format(style),
                               command: [
-                                sassc, '-a', '@INPUT@', '@OUTPUT@'
+                                sassc, '--indented', '@INPUT@', '@OUTPUT@'
                               ],
                               depend_files: theme_sources)
 endforeach

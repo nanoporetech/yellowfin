@@ -5,7 +5,7 @@ if [ ! "$(which sassc 2> /dev/null)" ]; then
    exit 1
 fi
 
-SASSC_OPT="-M -t compact"
+SASSC_OPT="--no-source-map --style=compressed"
 
 echo Generating the css...
 

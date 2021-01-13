@@ -1,0 +1,11 @@
+Package: yellowfin-theme
+Version: 1.2.3
+Section: misc
+Priority: optional
+Maintainer: Will McEnaney  <Will.McEnaney@nanoporetech.com>
+Architecture: all
+Source: PROJECT
+Depends: gnome-shell
+Breaks: gnome-shell (<< 3.35.92)
+Description: Oxford Nanopore GNOME Shell desktop theme.
+ The Yellowfin GNOME Shell desktop theme is based on Yaru from the Ubuntu Community

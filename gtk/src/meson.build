@@ -1,5 +1,5 @@
 gnome = import('gnome')
-sassc = find_program('sassc')
+sassc = find_program('sass')
 
 variants = [
   'gtk',
@@ -71,7 +71,7 @@ foreach flavour: flavours
         input: '@0@.scss'.format(gtk_scss_path),
         output: '@0@-generated.css'.format(target_name),
         depend_files: files(gtk3_scss_dependencies),
-        command: [sassc, '-a', '@INPUT@', '@OUTPUT@'],
+        command: [sassc, '@INPUT@', '@OUTPUT@'],
       )
 
       conf_data = configuration_data()

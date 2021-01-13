@@ -1,15 +1,22 @@
 ##########################################
-# @ThemeName@ specific session for testers #
+#   Ubuntu session @ThemeName@ themeing  #
 ##########################################
 
-[org.gnome.desktop.interface:@ThemeName@]
-cursor-theme = "@ThemeName@"
+[org.gnome.desktop.interface:ubuntu]
+gtk-theme = "@ThemeName@-dark"
 icon-theme = "@ThemeName@"
-gtk-theme = "@ThemeName@"
+cursor-theme = "@ThemeName@"
 
-[org.gnome.desktop.sound:@ThemeName@]
+
+[org.gnome.desktop.sound:ubuntu]
 theme-name = "@ThemeName@"
 input-feedback-sounds = true
 
-[org.gnome.mutter:@ThemeName@]
-center-new-windows = true
+[org.gnome.shell.extensions.dash-to-dock:ubuntu]
+custom-theme-running-dots-color = "@AccentColour@"
+custom-theme-running-dots-border-color = "@AccentColour@"
+
+[org.gnome.desktop.interface:GNOME-Greeter]
+gtk-theme = "Yellowfin"
+icon-theme = "Yellowfin"
+cursor-theme = "Yellowfin"
