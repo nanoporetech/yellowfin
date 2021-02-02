@@ -1,7 +1,8 @@
 /* Screen Shield */
 
 .unlock-dialog-clock {
-  color: white;
+  background-color: white;
+  color: $green;
   font-weight: 300;
   text-align: center;
   spacing: 24px;
@@ -25,6 +26,7 @@
 }
 
 .unlock-dialog-notifications-container {
+  background-color: white;
   margin: 12px 0;
   spacing: 6px;
   width: 23em;
@@ -66,7 +68,7 @@
 }
 
 #lockDialogGroup {
-  background-color: darken($purple, 10%); // Yaru: purple login screen
+  background-color: $green; // Yaru: purple login screen
 }
 
 #unlockDialogNotifications {

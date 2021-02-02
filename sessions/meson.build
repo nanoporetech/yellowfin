@@ -28,7 +28,7 @@ configure_file(input : 'THEMENAME-wayland.desktop.in',
               install_dir: join_paths(get_option('datadir'), 'wayland-sessions'))
 
 configure_file(input : 'THEMENAME.gschema.override.in',
-              output : '99_'+meson.project_name()+'.gschema.override',
+              output : '25_'+meson.project_name()+'.gschema.override',
               configuration : conf_data,
               install_dir: join_paths(get_option('datadir'), 'glib-2.0', 'schemas'))
 
