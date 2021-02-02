@@ -40,6 +40,7 @@ $primary_accent_bg_color: $green;
 $primary_accent_fg_color: $white;
 $secondary_accent_bg_color: $darkblue;
 $secondary_accent_fg_color: $white;
+$tertiary_accent_fg_color: $blue;
 
 //Print colours to allow non-css apps to parse this file
 @debug "primary_accent_bg_color: #{$primary_accent_bg_color}";
