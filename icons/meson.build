@@ -11,6 +11,8 @@ themes_f = [
   'index.theme',
 ]
 conf_data = configuration_data()
+conf_data.merge_from(default_conf)
+
 conf_data.set('ThemeName', meson.project_name())
 foreach theme: themes_f
   configure_file(input : 'Suru/@0@'.format(theme),

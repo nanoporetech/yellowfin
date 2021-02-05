@@ -58,6 +58,8 @@ foreach variant: variants
   endif
 
   conf_data = configuration_data()
+  conf_data.merge_from(default_conf)
+
   conf_data.set('ThemeVariant', variant)
   theme_main_file = configure_file(
     input: 'gnome-shell.scss.in',

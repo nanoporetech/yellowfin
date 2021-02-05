@@ -1,12 +1,13 @@
 gnomeshell_mode_dir = join_paths(get_option('datadir'), 'gnome-shell', 'modes')
 
 conf_data = configuration_data()
+conf_data.merge_from(default_conf)
 conf_data.set('ThemeName', meson.project_name())
 conf_data.set('LowerCaseThemeName', meson.project_name().to_lower())
 
-r=run_command('bash', '-c', 'sass ../_palette.scss 2>&1 | awk \'/primary_accent_bg_color: /{print $4}\'')
-colour = r.stdout().strip()
-conf_data.set('AccentColour', colour)
+# r=run_command('bash', '-c', 'sass ../_palette.scss 2>&1 | awk \'/primary_accent_bg_color: /{print $4}\'')
+# colour = r.stdout().strip()
+# conf_data.set('AccentColour', colour)
 
 resource_path = gnomeshell_use_gresource ? join_paths('theme', meson.project_name(), '') : ''
 conf_data.set('ThemeResourcePath', resource_path)

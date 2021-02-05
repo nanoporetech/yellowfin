@@ -6,9 +6,10 @@ foreach flavour: flavours
     style_dir = join_paths(get_option('datadir'), gtksourceview_dir, 'styles')
 
     conf_data = configuration_data()
+    conf_data.merge_from(default_conf)
+
     conf_data.set('ThemeName', meson.project_name())
     conf_data.set('FlavourThemeName', theme_name)
-    conf_data.set('PrimaryAccent', '#E95420')
 
     configure_file(input: flavour + '.xml.in',
       output: theme_name + '.xml',

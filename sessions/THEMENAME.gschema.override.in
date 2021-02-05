@@ -13,8 +13,8 @@ theme-name = "@ThemeName@"
 input-feedback-sounds = true
 
 [org.gnome.shell.extensions.dash-to-dock:ubuntu]
-custom-theme-running-dots-color = "@AccentColour@"
-custom-theme-running-dots-border-color = "@AccentColour@"
+custom-theme-running-dots-color = "@primary_accent_bg_color@"
+custom-theme-running-dots-border-color = "@primary_accent_bg_color@"
 
 [org.gnome.desktop.interface:GNOME-Greeter]
 gtk-theme = "Yellowfin"

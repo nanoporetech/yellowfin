@@ -3,7 +3,7 @@
     <author>Martin Wimpress</author>
     <_description>A GtkSourceView style to match @FlavourThemeName@</_description>
     <!-- Primary Accent -->
-    <color name="primary" value="@PrimaryAccent@" />
+    <color name="primary" value="@primary_accent_bg_color@" />
 
     <!-- Blacks -->
     <color name="black" value="#000000" />

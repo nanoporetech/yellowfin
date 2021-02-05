@@ -17,6 +17,8 @@ foreach flavour: flavours
   theme_dir = join_paths(get_option('datadir'), 'themes', theme_name)
 
   conf_data = configuration_data()
+  conf_data.merge_from(default_conf)
+
   conf_data.set('ThemeName', theme_name)
   conf_data.set('FlavourThemeName', theme_name)
   configure_file(input: 'index.theme.in',
@@ -76,6 +78,8 @@ foreach flavour: flavours
       )
 
       conf_data = configuration_data()
+      conf_data.merge_from(default_conf)
+
       conf_data.set('THEME_NAME', theme_name)
       conf_data.set('GTK_VER', gtk_ver)
       gtk_css += configure_file(
@@ -100,6 +104,8 @@ foreach flavour: flavours
     endforeach
 
     conf_data = configuration_data()
+    conf_data.merge_from(default_conf)
+
     conf_data.set('THEME_NAME', theme_name)
     conf_data.set('GTK_VER', gtk_ver)
     conf_data.set('ASSETS', '\n'.join(assets_xml))
