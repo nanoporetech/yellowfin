@@ -12,6 +12,14 @@
 
   $_gdm_bg: $porcelain; // Yaru: we force the light colors because GDM doesn't change on shell theme switch
 
+  .user-icon{
+    background-image: url("file:///usr/share/backgrounds/oxfordnanopore/wheel.svg");
+    background-size: cover;
+    & *{
+      opacity: 0;
+    }
+  }
+
   StEntry {
     @if $variant=='dark' {
       $_gdm_entry_bg: transparentize(lighten(desaturate(#241f31, 20%), 2%), 0.5);
