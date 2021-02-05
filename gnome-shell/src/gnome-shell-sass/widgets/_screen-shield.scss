@@ -67,7 +67,8 @@
 }
 
 #lockDialogGroup {
-  background-color: $green; // Yaru: purple login screen
+  background: $primary_accent_bg_color url(file:///usr/share/backgrounds/lockscreen.svg);
+  background-size: cover; // Yaru: purple login screen
 }
 
 #unlockDialogNotifications {
