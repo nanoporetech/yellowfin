@@ -13,7 +13,8 @@
 ##    -p [version], --package [version]   Package Yellowfin theme
 ##    -c, --clean       Clean the build directory
 
-PACKAGE_DIR=/source/repos/yellowfin/build/pkg/
+cd `dirname "${BASH_SOURCE[0]}"`
+PACKAGE_DIR=build/pkg
 
 # No-arguments is not allowed
 [ $# -eq 0 ] && sed -ne 's/^## \(.*\)/\1/p' $0 && exit 1
@@ -82,7 +83,8 @@ function build {
     meson build
   fi
   ninja -C build install
-  DESTDIR=$PACKAGE_DIR meson install -C build
+  mkdir -p $PACKAGE_DIR
+  DESTDIR=`realpath $PACKAGE_DIR` meson install -C build
 }
 
 function package {
@@ -124,3 +126,5 @@ shift $(($OPTIND - 1))
 [ ! -z $_clean ] && clean
 [ ! -z $_build ] && build
 [ ! -z $_package ] && package $1
+
+exit 0

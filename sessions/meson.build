@@ -34,4 +34,4 @@ configure_file(input : 'THEMENAME.gschema.override.in',
               install_dir: join_paths(get_option('datadir'), 'glib-2.0', 'schemas'))
 
 meson.add_install_script('meson/install-dock-override', meson.project_name().to_lower())
-meson.add_install_script('meson/compile-schemas')
+#meson.add_install_script('meson/compile-schemas')
