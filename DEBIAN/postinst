@@ -3,5 +3,5 @@
 set -e
 
 if [ "$1" = configure ]; then
-  update-alternatives --install /usr/share/gnome-shell/gdm3-theme.gresource gdm3-theme.gresource /usr/share/gnome-shell/theme/Yellowfin/gnome-shell-theme.gresource 20
+  update-alternatives --install /usr/share/gnome-shell/gdm3-theme.gresource gdm3-theme.gresource /usr/share/gnome-shell/theme/Yellowfin/gnome-shell-theme.gresource 25
 fi
