@@ -21,8 +21,11 @@ foreach component: components
   default_conf = configuration_data()
   foreach colour: colours
     colour = colour.split(':')
-    if colour.length() > 1
-      default_conf.set(colour[2].strip(), colour[3].strip())
+    if colour.length() == 4
+      key = colour[2].strip()
+      if key.endswith('color')
+        default_conf.set(colour[2].strip(), colour[3].strip())
+      endif
     endif
   endforeach
 
