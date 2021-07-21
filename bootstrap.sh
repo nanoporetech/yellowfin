@@ -62,7 +62,7 @@ function log {
   echo "[+]" $@
 }
 
-development_deps=(meson sass libgtk-3-dev)
+development_deps=(meson dart-sass libgtk-3-dev)
 testing_deps=(libgtk-3-dev gtk-3-examples gnome-tweaks)
 
 function install {
