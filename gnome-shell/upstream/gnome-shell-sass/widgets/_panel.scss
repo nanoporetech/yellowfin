@@ -27,7 +27,7 @@ $panel_height: 1.86em;
 
   // spacing between activities, app menu and such
   #panelLeft, #panelCenter {
-    spacing: $base_spacing;
+    spacing: $base-spacing;
   }
 
   // the rounded outset corners
@@ -116,6 +116,6 @@ $panel_height: 1.86em;
 
 // App Menu
 #appMenu {
-  spacing: $base_spacing;
+  spacing: $base-spacing;
   .label-shadow { color: transparent; }
 }

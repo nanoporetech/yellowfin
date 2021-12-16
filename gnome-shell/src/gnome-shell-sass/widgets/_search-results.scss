@@ -55,7 +55,7 @@
 }
 
 .grid-search-results {
-  spacing: $base_spacing * 6;
+  spacing: $base-spacing * 6;
 }
 
 // Search results with icons
@@ -69,7 +69,7 @@
 
   // content
   .list-search-provider-content {
-    spacing: $base_spacing * 2;
+    spacing: $base-spacing * 2;
 
     // provider labels
     .list-search-provider-details {
@@ -83,7 +83,7 @@
 
 // search results list
 .list-search-results {
-  spacing: $base_spacing;
+  spacing: $base-spacing;
 }
 
 // search result listitem
@@ -97,7 +97,7 @@
 
   // list item title (with leading icon)
   .list-search-result-title {
-    spacing: $base_spacing * 2;
+    spacing: $base-spacing * 2;
     // font-weight: bold;
   }
 

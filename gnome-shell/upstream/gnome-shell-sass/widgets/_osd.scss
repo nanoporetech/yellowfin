@@ -6,7 +6,7 @@ $osd_levelbar_height:8px;
   @extend %osd_panel;
   text-align: center;
   font-weight: bold;
-  spacing: $base_spacing * 2; // 12px
+  spacing: $base-spacing * 2; // 12px
   margin: $base_margin * 8; // 32px
   min-width: 64px;
   min-height: 64px;

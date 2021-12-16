@@ -1,10 +1,12 @@
+@use 'sass:math';
+
 $_base_hover_color: transparentize($fg_color, 0.85);
 $_base_active_color: transparentize($fg_color, 0.75);
 $_titlebutton_height: 24px;
 
 @mixin draw_circle($c, $size:$_titlebutton_height) {
   $button_size: $size + 2px * 2;
-  $circle_size: 20px / $button_size / 2;
+  $circle_size: math.div(20px, math.div($button_size,2));
 
   background-image: -gtk-gradient(radial,
                                   center center, 0,
@@ -348,7 +350,7 @@ rubberband {
 }
 // Fix for color chose buttons, should be moved to upstream as it is variable
 // If the min-height is not set, it stretches compact headerbars
-button.color { min-height: $_headerbar_height / 2; }
+button.color { min-height: math.div($_headerbar_height, 2); }
 
 // Entries drown if drawn on widgets with $base_color
 // Fixing this at least for notebooks, since entries on tabs is a common pattern

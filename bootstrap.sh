@@ -13,7 +13,7 @@
 ##    -p [version], --package [version]   Package Yellowfin theme
 ##    -c, --clean       Clean the build directory
 
-cd `dirname "${BASH_SOURCE[0]}"`
+cd "$(dirname "${BASH_SOURCE[0]}")" || exit 1
 PACKAGE_DIR=build/pkg
 
 # No-arguments is not allowed
@@ -33,7 +33,7 @@ for arg in "$@"; do
 done
 
 function print_illegal() {
-    echo Unexpected flag in command line \"$@\"
+    echo "Unexpected flag in command line \"$*\""
 }
 
 # Parsing flags and arguments
@@ -59,7 +59,7 @@ done
 INSTALLER="apt install"
 
 function log {
-  echo "[+]" $@
+  echo "[+] $*"
 }
 
 development_deps=(meson dart-sass libgtk-3-dev)
@@ -84,7 +84,7 @@ function build {
   fi
   ninja -C build install
   mkdir -p $PACKAGE_DIR
-  DESTDIR=`realpath $PACKAGE_DIR` meson install -C build
+  DESTDIR=$(realpath $PACKAGE_DIR) meson install -C build
 }
 
 function package {
@@ -100,7 +100,7 @@ function package {
     fi
   fi
   if [[ $ver == "" ]]; then
-    SUB=`(( i = $(awk -F"[ .]" '/Version: /{print $4}' ./DEBIAN/control) +1 ));echo $i`
+    (( SUB = $(awk -F"[ .]" '/Version: /{print $4}' ./DEBIAN/control) +1 ))
     sed -i "/Version: /s/\([0-9]\+\.[0-9]\+\.\)[0-9]\+/\1$SUB/" ./DEBIAN/control
   fi
   VERSION=$(awk '/Version: /{print $2}' ./DEBIAN/control)
@@ -119,7 +119,7 @@ function clean {
   rm -rf ./build
 }
 
-shift $(($OPTIND - 1))
+shift $((OPTIND - 1))
 
 [ ! -z $_development ] && install "building and installing" ${development_deps[@]}
 [ ! -z $_testing ] && install "testing" ${testing_deps[@]}

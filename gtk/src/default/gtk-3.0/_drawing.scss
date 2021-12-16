@@ -1,5 +1,7 @@
 // Drawing mixins
 
+@use 'sass:math';
+
 @function _backdrop_color($c) {
   //
   // adjusts colors for use in the backdrop state
@@ -177,8 +179,8 @@
 // $tc is the text color
 // $bg is the background color
 //
-  $_lbg: lightness($bg)/100%;
-  @if lightness($tc)<50% { @return transparentize(white,1-$_lbg/($_lbg*1.3)); }
+  $_lbg: math.div(lightness($bg),100%);
+  @if lightness($tc)<50% { @return transparentize(white, 1 - math.div($_lbg, $_lbg * 1.3)); }
   @else { @return transparentize(black,$_lbg*0.8); }
 }
 
@@ -975,7 +977,7 @@
 
 @mixin draw_circle($c, $close:false, $size:24px) {
     $button_size: $size + 2px * 2;
-    $circle_size: 20px / $button_size / 2;
+    $circle_size: math.div(20px, math.div($button_size,2));
 
     background-image: -gtk-gradient(radial,
                                     center center, 0,

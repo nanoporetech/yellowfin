@@ -1,7 +1,9 @@
 /* Date/Time Menu */
 
+@use 'sass:math';
+
 .clock-display-box {
-  spacing: $base_spacing / 2;
+  spacing: math.div($base-spacing, 2);
 
   .clock {
     padding-left: $base_padding;
@@ -16,7 +18,7 @@
 
 // Calendar menu side column
 .datemenu-calendar-column {
-  spacing: $base_spacing;
+  spacing: $base-spacing;
   border: 0 solid $bubble_borders_color;
   padding: 0 $base_padding * 2;
 
@@ -27,7 +29,7 @@
   }
 
   .datemenu-displays-box {
-    spacing: $base_spacing;
+    spacing: $base-spacing;
   }
 }
 
@@ -182,11 +184,11 @@
   padding: $base_padding * 2;
 
   .events-box {
-    spacing: $base_spacing;
+    spacing: $base-spacing;
   }
 
   .events-list {
-    spacing: 2 * $base_spacing;
+    spacing: 2 * $base-spacing;
   }
 
   .events-title {
@@ -208,8 +210,8 @@
   padding: $base_padding * 2;
 
   .world-clocks-grid {
-    spacing-rows: $base_spacing;
-    spacing-columns: $base_spacing * 2;
+    spacing-rows: $base-spacing;
+    spacing-columns: $base-spacing * 2;
   }
 
   // title
@@ -250,11 +252,11 @@
   padding: $base_padding * 2;
 
   .weather-box {
-    spacing: $base_spacing + $base_margin;
+    spacing: $base-spacing + $base_margin;
   }
 
   .weather-header-box {
-    spacing: $base_spacing;
+    spacing: $base-spacing;
   }
 
   .weather-header {
@@ -268,8 +270,8 @@
   }
 
   .weather-grid {
-    spacing-rows: $base_spacing;
-    spacing-columns: $base_spacing * 2;
+    spacing-rows: $base-spacing;
+    spacing-columns: $base-spacing * 2;
   }
 
   .weather-forecast-time {

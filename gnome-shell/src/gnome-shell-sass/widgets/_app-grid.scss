@@ -4,10 +4,10 @@ $app_icon_size: 96px;
 
 // app icons
 .icon-grid {
-  row-spacing: $base_spacing * 6;
-  column-spacing: $base_spacing * 6;
-  max-row-spacing: $base_spacing * 12;
-  max-column-spacing: $base_spacing * 12;
+  row-spacing: $base-spacing * 6;
+  column-spacing: $base-spacing * 6;
+  max-row-spacing: $base-spacing * 12;
+  max-column-spacing: $base-spacing * 12;
 }
 
 /* App Icons */
@@ -23,7 +23,7 @@ $app_grid_fg_color: #fff;
     padding: 10px 8px 5px 8px;
 
     > StBoxLayout {
-      spacing: $base_spacing;
+      spacing: $base-spacing;
     }
   }
 }
@@ -70,8 +70,8 @@ $app_grid_fg_color: #fff;
   }
 
   & .icon-grid {
-    row-spacing: $base_spacing * 2;
-    column-spacing: $base_spacing * 5;
+    row-spacing: $base-spacing * 2;
+    column-spacing: $base-spacing * 5;
   }
 
   & .page-indicators {
@@ -90,8 +90,8 @@ $app_grid_fg_color: #fff;
 
 .app-folder-icon {
   padding: $base_padding;
-  spacing-rows: $base_spacing;
-  spacing-columns: $base_spacing;
+  spacing-rows: $base-spacing;
+  spacing-columns: $base-spacing;
 }
 
 
@@ -107,7 +107,7 @@ $app_grid_fg_color: #fff;
 // Rename popup for app folders
 .rename-folder-popup {
   .rename-folder-popup-item {
-    spacing: $base_spacing;
+    spacing: $base-spacing;
     &:ltr, &:rtl { padding: 0 $base_padding * 2; }
   }
 }
